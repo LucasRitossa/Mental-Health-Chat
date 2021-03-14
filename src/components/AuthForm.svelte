@@ -29,7 +29,7 @@ import App from "../App.svelte";
 </p>
 <p  style="padding-top:7px" class="has-text-centered">
   Don't have an account?
-  <span class="has-text-link link" on:click={() => (mode = 'signUp', homepg=false)}>Sign Up</span>
+  <span style="cursor: pointer" class=" has-text-link link" on:click={() => (mode = 'signUp', homepg=false)}>Sign Up</span>
 </p>
 <div style="padding-left:31%; padding-top:27%"class="container">
 <p style="width:50%; " class="has-text-centered">
