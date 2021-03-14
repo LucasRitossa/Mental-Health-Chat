@@ -1,9 +1,11 @@
 <script>
+import App from "../App.svelte";
+
   export let auth;
   let mode = "signIn";
   let email = "";
   let password = "";
-
+  let homepg=true;
   async function handleSubmit() {
     if (mode === "signIn") {
       await auth.signInWithEmailAndPassword(email, password);
@@ -14,8 +16,29 @@
     }
   }
 </script>
+<body>
+<h1 class="title has-text-info has-text-centered">Mental Health Chat</h1>
+{#if homepg == true}
 
-<h1 class="title has-text-info has-text-centered">Mental Chat</h1>
+<p style="padding-top:20%"class="has-text-centered">
+ 
+<button class="button is-link is-large" on:click={() => (homepg = false)}>
+  Sign In</button
+>
+
+</p>
+<p  style="padding-top:7px" class="has-text-centered">
+  Don't have an account?
+  <span class="has-text-link link" on:click={() => (mode = 'signUp', homepg=false)}>Sign Up</span>
+</p>
+<div style="padding-left:31%; padding-top:27%"class="container">
+<p style="width:50%; " class="has-text-centered">
+  At mental health chat we strive to help the younger generation deal with their with an online group therapy type of approach. Mental Health chat allows the users to connect with other users with similar issue and talk about them anonymously.
+</p>
+</div>
+{:else}
+
+
 {#if mode === "signIn"}
   <h2 class="title">Sign In</h2>
 {:else}
@@ -28,7 +51,7 @@
       <label class="label">Email</label>
       <div class="control has-icons-left has-icons-right">
         <input
-          class={email.includes("mail.com")
+          class={email.includes("@gmail.com")
             ? "input is-success"
             : "input is-danger"}
           type="email"
@@ -38,7 +61,7 @@
         <span class="icon is-small is-left">
           <i class="fas fa-envelope" />
         </span>
-        {#if !email.includes("mail.com")}
+        {#if !email.includes("@gmail.com")}
           <span class="icon has-text-danger is-right">
             <i class="fas fa-exclamation-triangle" />
           </span>
@@ -48,7 +71,7 @@
           </span>
         {/if}
       </div>
-      {#if email.includes("mail.com")}
+      {#if email.includes("@gmail.com")}
         <p class={"help is-success"}>This Email is Available</p>
       {:else}
         <p class={"help is-danger"}>This Email is invalid</p>
@@ -93,16 +116,16 @@
 <p class="has-text-centered">
   {#if mode === "signIn"}
     No Account? <br />
-    <button
-      class="button is-link is-outlined"
-      on:click={() => (mode = "signUp")}
-    >
+    <button class="button is-link" on:click={() => (mode = "signUp")}>
       Sign Up!</button
     >
   {:else}
     Already Signed up? <br />
-    <button class="button is-link is-outlined" on:click={() => (mode = "signIn")}>
+    <button class="button is-link" on:click={() => (mode = "signIn")}>
       Log In!</button
     >
   {/if}
+  
 </p>
+{/if}
+</body>
