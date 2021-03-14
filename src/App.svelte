@@ -4,6 +4,8 @@
   import "firebase/firestore";
   import "firebase/auth";
   import AuthForm from "./components/AuthForm.svelte";
+  import SelectPage from "./components/SelectPage.svelte";
+
   const firebaseConfig = {
     apiKey: "AIzaSyA1I7m05hI0jhl3SJNZCYKUQ3IzbWGTfk0",
     authDomain: "mental-chat-eca48.firebaseapp.com",
@@ -15,12 +17,28 @@
   firebase.initializeApp(firebaseConfig);
 </script>
 
-<main class="container section">
+<main class="app container section ">
   <FirebaseApp {firebase}>
     <User let:user let:auth>
+
+      <SelectPage {user} />
+      <button
+        class="button is-fullwidth is-link"
+        on:click={() => auth.signOut()}>Sign Out</button
+      >
+
       <div slot="signed-out">
-        <AuthForm {auth} />
+      <AuthForm {auth} />
       </div>
     </User>
   </FirebaseApp>
 </main>
+
+<style>
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+  }
+</style>

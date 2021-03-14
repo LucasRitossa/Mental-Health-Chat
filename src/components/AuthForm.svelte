@@ -5,16 +5,12 @@
   let password = "";
 
   async function handleSubmit() {
-    try {
-      if (mode === "signIn") {
-        await auth.signInWithEmailAndPassword(email, password);
-      } else {
-        await auth.createUserWithEmailAndPassword(email, password);
-      }
+    if (mode === "signIn") {
+      await auth.signInWithEmailAndPassword(email, password);
+    } else {
+      await auth.createUserWithEmailAndPassword(email, password);
       email = "";
       password = "";
-    } catch {
-      prompt("Error While trying to validate login, try again later");
     }
   }
 </script>
@@ -32,7 +28,7 @@
       <label class="label">Email</label>
       <div class="control has-icons-left has-icons-right">
         <input
-          class={email.includes("@gmail.com")
+          class={email.includes("mail.com")
             ? "input is-success"
             : "input is-danger"}
           type="email"
@@ -42,7 +38,7 @@
         <span class="icon is-small is-left">
           <i class="fas fa-envelope" />
         </span>
-        {#if !email.includes("@gmail.com")}
+        {#if !email.includes("mail.com")}
           <span class="icon has-text-danger is-right">
             <i class="fas fa-exclamation-triangle" />
           </span>
@@ -52,7 +48,7 @@
           </span>
         {/if}
       </div>
-      {#if email.includes("@gmail.com")}
+      {#if email.includes("mail.com")}
         <p class={"help is-success"}>This Email is Available</p>
       {:else}
         <p class={"help is-danger"}>This Email is invalid</p>
@@ -97,12 +93,15 @@
 <p class="has-text-centered">
   {#if mode === "signIn"}
     No Account? <br />
-    <button class="button is-link" on:click={() => (mode = "signUp")}>
+    <button
+      class="button is-link is-outlined"
+      on:click={() => (mode = "signUp")}
+    >
       Sign Up!</button
     >
   {:else}
     Already Signed up? <br />
-    <button class="button is-link" on:click={() => (mode = "signIn")}>
+    <button class="button is-link is-outlined" on:click={() => (mode = "signIn")}>
       Log In!</button
     >
   {/if}
