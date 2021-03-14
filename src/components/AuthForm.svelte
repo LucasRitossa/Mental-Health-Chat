@@ -33,7 +33,7 @@ import App from "../App.svelte";
 </p>
 <div style="padding-left:31%; padding-top:27%"class="container">
 <p style="width:50%; " class="has-text-centered">
-  At mental health chat we strive to help the younger generation deal with their with an online group therapy type of approach. Mental Health chat allows the users to connect with other users with similar issue and talk about them anonymously.
+  At mental health chat we strive to help the younger generation deal with their mental health issues thorugh an online group therapy type of approach. Mental Health Chat allows the users to connect with other users with similar issue and talk about them anonymously.
 </p>
 </div>
 {:else}
