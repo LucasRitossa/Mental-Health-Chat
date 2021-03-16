@@ -7,7 +7,7 @@
   import SelectPage from "./components/SelectPage.svelte";
 
   const firebaseConfig = {
-    apiKey: "AIzaSyA1I7m05hI0jhl3SJNZCYKUQ3IzbWGTfk0",
+    apiKey: "",
     authDomain: "mental-chat-eca48.firebaseapp.com",
     projectId: "mental-chat-eca48",
     storageBucket: "mental-chat-eca48.appspot.com",
